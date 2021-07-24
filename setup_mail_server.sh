@@ -146,7 +146,7 @@ echo "user = mail
 password = superstrongpassword
 hosts = 127.0.0.1
 dbname = servermail
-query = SELECT destination FROM virtual_aliases WHERE source='%s'" > /etc/postfix/mysql-virtual-alias-maps.cf
+query = SELECT email FROM virtual_users WHERE email='%s' UNION SELECT destination FROM virtual_aliases WHERE source='%s' UNION SELECT destination FROM virtual_aliases WHERE source='*@%d' LIMIT 1" > /etc/postfix/mysql-virtual-alias-maps.cf
 
 
 
